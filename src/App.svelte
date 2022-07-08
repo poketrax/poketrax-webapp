@@ -1,27 +1,35 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import TitleBar from "./components/TitleBar.svelte";
+  import { page } from "./lib/Stores";
+  import CardSearch from "./pages/CardSearch.svelte";
+  import Collections from "./pages/Collections.svelte";
+  import SealedProductSearch from "./pages/SealedProductSearch.svelte";
+  import Sets from "./pages/Sets.svelte";
+
+  let pageVal: string;
+  page.subscribe((value) => (pageVal = value));
 </script>
 
-<main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello Typescript!</h1>
+<TitleBar />
 
-  <Counter />
+{#if pageVal === "cards"}
+  <CardSearch />
+{/if}
 
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
+{#if pageVal === "sets"}
+  <Sets />
+{/if}
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
-</main>
+{#if pageVal === "sealedProducts"}
+  <SealedProductSearch />
+{/if}
 
-<style global lang="postcss"> 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+{#if pageVal === "collections"}
+  <Collections />
+{/if}
+
+<style global lang="postcss">
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
