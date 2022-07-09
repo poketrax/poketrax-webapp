@@ -1,12 +1,9 @@
 <script lang="ts">
-    export let className = ""
+  let clazz;
+  export { clazz as class };
 </script>
 
-<svg
-  class={className}
-  viewBox="0 0 24 24"
-  xmlns="http://www.w3.org/2000/svg"
->
+<svg class={clazz} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path
     fill-rule="evenodd"
     clip-rule="evenodd"

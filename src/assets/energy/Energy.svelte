@@ -1,11 +1,12 @@
 <script lang="ts">
     import Pokeball from "./pokeball.svelte";
     export let type = "";
-    export let className = "";
+    let clazz;
+	export { clazz as class };
 </script>
 
-{#if type === ""}
-    <Pokeball className={className}/>
+{#if type === "" || type === "trainer"}
+    <Pokeball class={clazz}/>
 {:else}
-    <img class={className} alt={type} src={`./assets/energy/${type}.png`} />
+    <img class={clazz} alt={type} src={`./assets/energy/${type}.png`} />
 {/if}

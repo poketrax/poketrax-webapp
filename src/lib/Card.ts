@@ -2,12 +2,13 @@ export class Card {
     public cardId: string
     public idTCGP: string
     public name : string
-    public expIdTCGP: number
+    public expIdTCGP: string
     public expCodeTCGP?: string
     public expName: string
     public expCardNumber : string
     public rarity: string
     public price?: number
+    public pokedex?: number
     public releaseDate?: string
     public energyType?: string
     public cardType?: string
@@ -18,7 +19,7 @@ export class Card {
     public grade? : string
     public variants? : string
 
-    constructor(cardId: string, idTCGP: string, name:string, expId:number, expName:string, expCardNumber:string, rarity:string){
+    constructor(cardId: string, idTCGP: string, name:string, expId:string, expName:string, expCardNumber:string, rarity:string){
         this.cardId = cardId
         this.idTCGP = idTCGP
         this.name = name
