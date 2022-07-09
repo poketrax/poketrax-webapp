@@ -609,6 +609,36 @@ export function openLink(type: string, product: Card | SealedProduct) {
 export function getCollectionValue(collection: string) {
     return fetch(`${baseURL}/collections/${collection}/value`)
 }
+
+export function getVariantBG(card: Card) {
+    switch (card.energyType) {
+        case 'Grass':
+            return `assets/revholo/grass-rev.png`
+        case 'Fire':
+            return `assets/revholo/fire-rev.png`
+        case 'Water':
+            return `assets/revholo/water-rev.png`
+        case 'Psychic':
+            return `assets/revholo/psychic-rev.png`
+        case 'Lightning':
+            return `assets/revholo/lightning-rev.png`
+        case 'Fighting':
+            return `assets/revholo/fighting-rev.png`
+        case 'Colorless':
+            return `assets/revholo/colorless-rev.png`
+        case 'Darkness':
+            return `assets/revholo/dark-rev.png`
+        case 'Metal':
+            return `assets/revholo/steel-rev.png`
+        case 'Fairy':
+            return `assets/revholo/fairy-rev.png`
+        case 'Dragon':
+            return `assets/revholo/dragon-rev.png`
+        default:
+            return `assets/revholo/trainer-rev.png`
+    }
+}
+
 /*
 export function getRarity(rarity: string) {
     switch (rarity) {

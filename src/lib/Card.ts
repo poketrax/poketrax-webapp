@@ -1,6 +1,6 @@
 export class Card {
     public cardId: string
-    public idTCGP: string
+    public idTCGP: number
     public name : string
     public expIdTCGP: string
     public expCodeTCGP?: string
@@ -19,7 +19,7 @@ export class Card {
     public grade? : string
     public variants? : string
 
-    constructor(cardId: string, idTCGP: string, name:string, expId:string, expName:string, expCardNumber:string, rarity:string){
+    constructor(cardId: string, idTCGP: number, name:string, expId:string, expName:string, expCardNumber:string, rarity:string){
         this.cardId = cardId
         this.idTCGP = idTCGP
         this.name = name
