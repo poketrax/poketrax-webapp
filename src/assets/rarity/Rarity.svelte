@@ -10,7 +10,7 @@
 
 {#if rarity === "Holo Rare"}
     <span>H</span><Icon class="material-icons">star</Icon>
-{:else if rarity === "Uncommon"}
+{:else if rarity === "Common"}
     <Common />
 {:else if rarity === "Ultra Rare" || rarity === "Rare BREAK" || rarity === "Classic Collection" }
     <Icon class="material-icons">star_half</Icon>

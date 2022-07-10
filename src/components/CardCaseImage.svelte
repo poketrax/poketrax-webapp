@@ -29,7 +29,7 @@
                             rgba(255, 0, 0, 1) 100%`;
 </script>
 
-<div class="static">
+<div class="relative">
     <div class="absolute flex items-center justify-center w-72 h-[357px]">
         {#if !imgLoaded}
             <CircularProgress style="height: 100px; width: 100px;" indeterminate />
@@ -42,7 +42,7 @@
             }`}
             id={`card-img${id}`}
             style="visability: ${imgLoaded ? 'visible' : 'hidden'}"
-            src={baseURL + "cardImg/" + encodeURIComponent(card.cardId)}
+            src={baseURL + "/cardImg/" + encodeURIComponent(card.cardId)}
             alt={card.name}
             on:click={() => {}}
             on:load={() => {
@@ -51,7 +51,7 @@
             on:error={imgError}
         />
         {#if card.variant === "Reverse Holofoil"}
-            <div class="w-64 h-[357px] absolute">
+            <div class="w-64 h-[357px] absolute rounded-md">
                 <img
                     class="flex items-center justify-center w-64 h-full rounded-md opacity-80"
                     alt="holo-overlay"
@@ -59,8 +59,8 @@
                     onClick={() => {}}
                 />
             </div>
-        {:else if card.variant.includes("Holofoil")}
-            <div class="w-64 h-[357px] absolute">
+        {:else if card.variant?.includes("Holofoil")}
+            <div class="w-64 h-[357px] absolute rounded-md">
                 <div
                     class="flex items-center justify-center w-64 h-full rounded-md opacity-30"
                     style="background: {rainbowHolo}"

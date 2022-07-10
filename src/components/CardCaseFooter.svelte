@@ -27,11 +27,11 @@
 
 <div class="h-8 pl-4 pr-4 flex justify-center items-center">
     <div class="flex justify-items-center items-center h-8 w-8">
-        <Wrapper>
+       <Wrapper>
             <img
                 class="h-6"
                 alt={card.expName}
-                src={baseURL + "expSymbol/" + card.expName}
+                src={baseURL + "/expSymbol/" + card.expName}
             />
             <Tooltip>{card.expName}</Tooltip>
         </Wrapper>
@@ -42,6 +42,7 @@
     <div class="grow" />
     <span>{card.expCardNumber}</span>
     <div class="grow" />
+
     <Wrapper>
         <div class="flex justify-items-center items-center">
             <Rarity rarity={card.rarity} />

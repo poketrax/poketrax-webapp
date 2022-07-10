@@ -4,7 +4,7 @@ import { Expansion } from "./Meta";
 import { Collection } from "./Collection";
 import { ProductList, SealedProduct, SealedPrice } from "./SealedProduct";
 
-export const baseURL = "http://localhost:3030/"
+export const baseURL = "http://localhost:3030"
 
 export class DbState {
     public ready: boolean = false
@@ -638,67 +638,3 @@ export function getVariantBG(card: Card) {
             return `assets/revholo/trainer-rev.png`
     }
 }
-
-/*
-export function getRarity(rarity: string) {
-    switch (rarity) {
-        case "Rare":
-            return (<IoStarSharp></IoStarSharp>)
-        case "Holo Rare":
-            return (<div className='flex justify-items-center items-center'><div>H</div><IoStarSharp></IoStarSharp></div>)
-        case "Uncommon":
-            return (<BsDiamondFill></BsDiamondFill>)
-        case "Ultra Rare":
-            return (<IoStarHalfSharp></IoStarHalfSharp>)
-        case "Secret Rare":
-            return (<div className='flex justify-items-center items-center'><div>S</div><IoStarOutline></IoStarOutline></div>)
-        case "Amazing Rare":
-            return (<img className='w-5 h-5' alt="" src={`./assests/amazing.svg`}></img>)
-        case "Shiny Holo Rare":
-            return (<div className='flex justify-items-center items-center'><BsStars></BsStars><IoStarSharp></IoStarSharp></div>)
-        case "Prism Rare":
-            return (<IoStarSharp></IoStarSharp>)
-        case "Rare BREAK":
-            return (<IoStarHalfSharp></IoStarHalfSharp>)
-        case "Classic Collection":
-            return (<IoStarHalfSharp></IoStarHalfSharp>)
-        case "Rare Ace":
-            return (<IoStarSharp></IoStarSharp>)
-        case "Promo":
-            return (<img className='w-5 h-5' alt="" src={`${baseURL}/expSymbol/Sword%20&%20Shield%20Promos`}></img>)
-        case "Radiant Rare":
-            return (<IoStarSharp></IoStarSharp>)
-        default:
-            return (<BsFillCircleFill></BsFillCircleFill>)
-    }
-}*/
-/*
-export function getEnergy(energyType: string) {
-    let _class = 'w-5 h-5 ml-2'
-    switch (energyType) {
-        case "Fire":
-            return <img className={_class} alt="" src={`./assests/fire.png`}/>
-        case "Water":
-            return (<img className={_class} alt="" src={`./assests/water.png`}></img>)
-        case "Grass":
-            return (<img className={_class} alt="" src={`./assests/grass.png`}></img>)
-        case "Fighting":
-            return (<img className={_class} alt="" src={`./assests/fighting.png`}></img>)
-        case "Psychic":
-            return (<img className={_class} alt="" src={`./assests/Psychic.png`}></img>)
-        case "Lightning":
-            return (<img className={_class} alt="" src={`./assests/electric.png`}></img>)
-        case "Colorless":
-            return (<img className={_class} alt="" src={`./assests/colorless.png`}></img>)
-        case "Darkness":
-            return (<img className={_class} alt="" src={`./assests/dark.png`}></img>)
-        case "Metal":
-            return (<img className={_class} alt="" src={`./assests/steel.png`}></img>)
-        case "Dragon":
-            return (<img className={_class} alt="" src={`./assests/dragon.png`}></img>)
-        case "Fairy":
-            return (<img className={_class} alt="" src={`./assests/fairy.png`}></img>)
-        default:
-            return (<CgPokemon className={_class}></CgPokemon>)
-    }
-}*/

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CardCaseFooter from './CardCaseFooter.svelte';
+    import CardCaseFooter from "./CardCaseFooter.svelte";
     import type { Card } from "../lib/Card";
     import Energy from "../assets/energy/Energy.svelte";
     import CardCaseImage from "./CardCaseImage.svelte";
@@ -14,10 +14,10 @@
 <div id={`card-case${id}`} class="mdc-elevation--z5 w-72 h-fit rounded-md">
     <!-- Title -->
     <div
-        class="relative h-16 mt-4 mb-2 ml-4 mr-4 rounded-md"
+        class="h-16 mt-4 mb-2 ml-4 mr-4 rounded-md"
         style="background-image: url({getVariantBG(card)})"
     >
-        <div class="absolute w-64 h-16 rounded-md flex items-center">
+        <div class="w-64 h-16 rounded-md flex items-center">
             <Energy class="ml-2 h-6 w-6" type={card.energyType} />
             <div class="pl-2 text-lg truncate" id="card-case-title">
                 <span>{card.name}</span>
@@ -29,8 +29,8 @@
             <CardCaseCorner {id} {card} />
         </div>
     </div>
-    <CardCaseImage {id} {card}/>
-    <CardCaseFooter {id} {card}/>
+    <CardCaseImage {id} {card} />
+    <CardCaseFooter {id} {card} />
 </div>
 
 <style lang="scss">
