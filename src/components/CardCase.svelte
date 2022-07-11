@@ -30,7 +30,7 @@
         </div>
     </div>
     <CardCaseImage {id} {card} />
-    <CardCaseFooter {id} {card} />
+    <CardCaseFooter {card} />
 </div>
 
 <style lang="scss">

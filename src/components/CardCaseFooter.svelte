@@ -5,29 +5,32 @@
     import "../assets/css/smui-dark.css";
     import "../assets/css/smui.css";
     import Rarity from "../assets/rarity/Rarity.svelte";
+    import { beforeUpdate, onMount } from "svelte";
 
     export let card: Card;
 
     let price = `$-.--`;
     let color = "";
 
-    if (card.price != null) {
-        price = `$${card.price.toFixed(2).toString()}`;
-        if (card.paid != null && card.paid !== 0) {
-            if (card.paid <= card.price) {
-                price = `⬆︎ ${price}`;
-                color = "text-green-600";
-            } else {
-                price = `⬇︎ ${price}`;
-                color = "text-red-600";
+    beforeUpdate( () => {
+        if (card.price != null) {
+            price = `$${card.price.toFixed(2).toString()}`;
+            if (card.paid != null && card.paid !== 0) {
+                if (card.paid <= card.price) {
+                    price = `⬆︎ ${price}`;
+                    color = "text-green-600";
+                } else {
+                    price = `⬇︎ ${price}`;
+                    color = "text-red-600";
+                }
             }
         }
-    }
+    });
 </script>
 
 <div class="h-8 pl-4 pr-4 flex justify-center items-center">
     <div class="flex justify-items-center items-center h-8 w-8">
-       <Wrapper>
+        <Wrapper>
             <img
                 class="h-6"
                 alt={card.expName}
