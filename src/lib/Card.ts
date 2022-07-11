@@ -46,9 +46,9 @@ export class Price {
     }
 }
 
-export class CardSearch {
+export class CardSearchResults {
     public total: number = 0
-    public cards: Card[] = []
+    public cards: Array<Card> = new Array<Card>()
 }
 
 export class LinkRequest{

@@ -1,7 +1,7 @@
 <script lang="ts">
     import Tooltip, { Wrapper } from "@smui/tooltip";
     import type { Card } from "../lib/Card";
-    import { baseURL } from "../lib/CardDB";
+    import { baseURL } from "../lib/Stores";
     import "../assets/css/smui-dark.css";
     import "../assets/css/smui.css";
     import Rarity from "../assets/rarity/Rarity.svelte";

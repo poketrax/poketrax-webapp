@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Card } from "../lib/Card";
-    import { baseURL, getVariantBG } from "../lib/CardDB";
+    import { baseURL, getVariantBG } from "../lib/Stores";
     import CircularProgress from "@smui/circular-progress/dist/CircularProgress.svelte";
     import "../assets/css/smui-dark.css";
     import "../assets/css/smui.css";

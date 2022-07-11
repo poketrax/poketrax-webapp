@@ -5,7 +5,7 @@
     import CardCaseImage from "./CardCaseImage.svelte";
     import firstEd from "../assets/modifiers/1st-edition.png";
     import CardCaseCorner from "../components/CardCaseCorner.svelte";
-    import { getVariantBG } from "../lib/CardDB";
+    import { getVariantBG } from "../lib/Stores";
 
     export let id: number;
     export let card: Card;

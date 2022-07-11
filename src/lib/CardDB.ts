@@ -1,55 +1,10 @@
 
-import { CardSearch, Price, Card } from "./Card";
-import { Expansion } from "./Meta";
-import { Collection } from "./Collection";
+import { CardSearchResults, Price, Card } from "./Card";
+import type { Expansion } from "./Meta";
+import type { Collection } from "./Collection";
 import { ProductList, SealedProduct, SealedPrice } from "./SealedProduct";
+import { baseURL, DbState } from "./Stores";
 
-export const baseURL = "http://localhost:3030"
-
-export class DbState {
-    public ready: boolean = false
-    public updated: boolean = false
-    public newSoftware: boolean = false
-}
-
-/**
- * Search for Cards 
- * @param page page to request
- * @param term search term
- * @param sets set filter
- * @param rarity rarity filter
- * @param sort sort options [name, setNumber, pokedex, priceASC, priceDSC, dateASC, dateASC]
- * @returns 
- */
-export function search(page: number, term?: string, sets?: string[], rarity?: string[], sort?: string): Promise<CardSearch> {
-    return new Promise<CardSearch>(
-        (resolve, reject) => {
-            let url = new URL(`${baseURL}/cards/${page ?? 0}`)
-            if (sets && sets.length !== 0) {
-                url.searchParams.set(`expansions`, encodeURI(JSON.stringify(sets)))
-            }
-            if (term) {
-                url.searchParams.set(`name`, term)
-            }
-            if (sort) {
-                url.searchParams.set('sort', sort)
-            }
-            if (rarity && rarity.length !== 0) {
-                url.searchParams.set(`rarities`, JSON.stringify(rarity))
-            }
-            fetch(url.toString())
-                .then(res => res.json())
-                .then(
-                    (data) => {
-                        resolve(data)
-                    },
-                    (err) => {
-                        reject(err)
-                    }
-                )
-        }
-    )
-}
 
 /**
  * Search for Sealed Products
@@ -137,11 +92,11 @@ export function getCollections(): Promise<Array<Collection>> {
  * @param sort sort option [wish, name, setNumber, pokedex, priceASC, priceDSC, dateASC, dateASC]
  * @returns 
  */
-export async function getCollectionCards(collection: string, page: number, searchVal?: string, rarity?: string[], sort?: string): Promise<CardSearch> {
-    return new Promise<CardSearch>(
+export async function getCollectionCards(collection: string, page: number, searchVal?: string, rarity?: string[], sort?: string): Promise<CardSearchResults> {
+    return new Promise<CardSearchResults>(
         (resolve, reject) => {
             if (collection === '') {
-                resolve(new CardSearch())
+                resolve(new CardSearchResults())
             }
             let url = new URL(`${baseURL}/collections/${collection}/cards/${page ?? 0}`)
             if (searchVal != null) {
@@ -608,33 +563,4 @@ export function openLink(type: string, product: Card | SealedProduct) {
 
 export function getCollectionValue(collection: string) {
     return fetch(`${baseURL}/collections/${collection}/value`)
-}
-
-export function getVariantBG(card: Card) {
-    switch (card.energyType) {
-        case 'Grass':
-            return `assets/revholo/grass-rev.png`
-        case 'Fire':
-            return `assets/revholo/fire-rev.png`
-        case 'Water':
-            return `assets/revholo/water-rev.png`
-        case 'Psychic':
-            return `assets/revholo/psychic-rev.png`
-        case 'Lightning':
-            return `assets/revholo/lightning-rev.png`
-        case 'Fighting':
-            return `assets/revholo/fighting-rev.png`
-        case 'Colorless':
-            return `assets/revholo/colorless-rev.png`
-        case 'Darkness':
-            return `assets/revholo/dark-rev.png`
-        case 'Metal':
-            return `assets/revholo/steel-rev.png`
-        case 'Fairy':
-            return `assets/revholo/fairy-rev.png`
-        case 'Dragon':
-            return `assets/revholo/dragon-rev.png`
-        default:
-            return `assets/revholo/trainer-rev.png`
-    }
 }
