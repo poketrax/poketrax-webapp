@@ -2,10 +2,8 @@
     import type { Writable } from "svelte/store";
     import type { SearchTerms } from "../lib/Stores";
     import IconButton from "@smui/icon-button";
-
-    import "../assets/css/smui-dark.css";
-    import "../assets/css/smui.css";
     import type { CardSearchResults } from "src/lib/Card";
+    import { onMount } from "svelte";
 
     let total = 0;
     let rowsPerPage = 25;
@@ -18,9 +16,10 @@
     export let resultStore: Writable<CardSearchResults>;
 
     searchStore.subscribe((val) => {
+        console.log(JSON.stringify(val));
         currentPage = val.page;
         start = currentPage * rowsPerPage;
-        if (currentPage > lastPage) {
+        if (lastPage !== 0 && currentPage > lastPage) {
             currentPage = lastPage;
         }
     });
@@ -28,8 +27,10 @@
         total = val.total;
         end = Math.min(start + rowsPerPage, total);
         lastPage = Math.max(Math.ceil(total / rowsPerPage) - 1, 0);
+        if (lastPage !== 0 && currentPage > lastPage) {
+            currentPage = lastPage;
+        }
     });
-
 </script>
 
 <div class="flex items-center">

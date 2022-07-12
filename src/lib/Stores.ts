@@ -22,10 +22,11 @@ export class SearchTerms {
 export const page = writable("cards")
 
 // Card Search
-export const cardSearch = writable(new SearchTerms())
-export const cardResults = writable(new CardSearchResults())
+export const cardSearchTermStore = writable(new SearchTerms())
+export const cardResultStore = writable(new CardSearchResults())
 
-cardSearch.subscribe(
+
+cardSearchTermStore.subscribe(
     (terms: SearchTerms) => {
         let url = new URL(`${baseURL}/cards/${terms.page ?? 0}`)
         if (terms.selectedSets && terms.selectedSets.length !== 0) {
@@ -44,8 +45,7 @@ cardSearch.subscribe(
             .then(res => res.json())
             .then(
                 (data) => {
-                    console.log(data)
-                    cardResults.set(data)
+                    cardResultStore.set(data)
                 },
                 (err) => {
                     console.log(err)

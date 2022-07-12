@@ -1,32 +1,35 @@
 <script lang="ts">
-    import { cardSearch, cardResults, SearchTerms } from "../lib/Stores";
+    import { cardSearchTermStore, cardResultStore, SearchTerms } from "../lib/Stores";
     import CardPagination from "./../components/CardPagination.svelte";
     import CardCase from "../components/CardCase.svelte";
     import { CardSearchResults } from "../lib/Card";
+    import CardSort from "../components/CardSort.svelte";
 
     let results: CardSearchResults = new CardSearchResults();
     let terms: SearchTerms = new SearchTerms();
 
-
-    cardSearch.subscribe((val) => {
+    cardSearchTermStore.subscribe((val) => {
         terms = val;
     });
-    cardResults.subscribe((val) => {
+    cardResultStore.subscribe((val) => {
         results = val;
     });
 
-    cardSearch.set(terms);
+    cardSearchTermStore.set(terms);
 </script>
 
-
+<div class="flex">
+    <div class="flex-grow"/>
+    <CardSort searchStore={cardSearchTermStore} />
+</div>
 
 <div class="h-[calc(100vh-11rem)] overflow-hidden">
     <div class="flex h-[calc(100vh-11rem)] overflow-auto">
         <div class="flex-grow" />
         <div>
             <CardPagination
-                searchStore={cardSearch}
-                resultStore={cardResults}
+                searchStore={cardSearchTermStore}
+                resultStore={cardResultStore}
             />
             <div
                 class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4"
@@ -37,8 +40,8 @@
                 {/each}
             </div>
             <CardPagination
-                searchStore={cardSearch}
-                resultStore={cardResults}
+                searchStore={cardSearchTermStore}
+                resultStore={cardResultStore}
             />
         </div>
         <div class="flex-grow" />

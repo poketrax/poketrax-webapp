@@ -5,7 +5,7 @@
     import "../assets/css/smui-dark.css";
     import "../assets/css/smui.css";
     import Rarity from "../assets/rarity/Rarity.svelte";
-    import { beforeUpdate, onMount } from "svelte";
+    import { beforeUpdate } from "svelte";
 
     export let card: Card;
 
