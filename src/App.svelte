@@ -5,6 +5,8 @@
   import Collections from "./pages/Collections.svelte";
   import SealedProductSearch from "./pages/SealedProductSearch.svelte";
   import Sets from "./pages/Sets.svelte";
+  import "./assets/css/smui-dark.css";
+  import "./assets/css/smui.css";
 
   let pageVal: string;
   page.subscribe((value) => (pageVal = value));

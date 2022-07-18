@@ -17,7 +17,6 @@ export class SearchTerms {
     public sort: string = ""
 }
 
-
 // Main Page
 export const page = writable("cards")
 
