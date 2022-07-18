@@ -408,26 +408,7 @@ export async function downloadProductPrices(product: SealedProduct, start: Date,
     link.remove()
 } */
 
-/**
- * Get set expantions
- * @returns 
- */
-export function expansions(): Promise<Expansion[]> {
-    return new Promise<Expansion[]>(
-        (resolve, reject) => {
-            fetch(`${baseURL}/expansions`)
-                .then(res => res.json())
-                .then(
-                    (data) => {
-                        resolve(data)
-                    },
-                    (err) => {
-                        reject(err)
-                    }
-                )
-        }
-    )
-}
+
 
 export class Grade {
     public grader: string

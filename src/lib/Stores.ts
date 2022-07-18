@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { Card, CardSearchResults } from './Card';
+import type { Expansion } from './Meta';
 
 export const baseURL = "http://localhost:3030"
 
@@ -17,13 +18,15 @@ export class SearchTerms {
     public sort: string = ""
 }
 
+// Meta data
+export const setStore = writable(new Array<Expansion>())
+
 // Main Page
 export const page = writable("cards")
 
 // Card Search
 export const cardSearchTermStore = writable(new SearchTerms())
 export const cardResultStore = writable(new CardSearchResults())
-
 
 cardSearchTermStore.subscribe(
     (terms: SearchTerms) => {
@@ -52,6 +55,40 @@ cardSearchTermStore.subscribe(
             )
     }
 )
+
+export function init() {
+    expansions()
+        .then(
+            (data) => {
+                setStore.set(data)
+            }
+        ).catch(
+            (err) => {
+                console.log(`Failed to load sets \n ${err}`)
+            }
+        )
+}
+
+/**
+ * Get set expantions
+ * @returns 
+ */
+function expansions(): Promise<Expansion[]> {
+    return new Promise<Expansion[]>(
+        (resolve, reject) => {
+            fetch(`${baseURL}/expansions`)
+                .then(res => res.json())
+                .then(
+                    (data) => {
+                        resolve(data)
+                    },
+                    (err) => {
+                        reject(err)
+                    }
+                )
+        }
+    )
+}
 
 export function getVariantBG(card: Card) {
     switch (card.energyType) {
