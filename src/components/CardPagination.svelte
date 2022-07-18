@@ -2,8 +2,7 @@
     import type { Writable } from "svelte/store";
     import type { SearchTerms } from "../lib/Stores";
     import IconButton from "@smui/icon-button";
-    import type { CardSearchResults } from "src/lib/Card";
-    import { onMount } from "svelte";
+    import type { CardSearchResults } from "../lib/Card";
 
     let total = 0;
     let rowsPerPage = 25;
