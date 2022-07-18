@@ -1,9 +1,14 @@
 <script lang="ts">
-    import { cardSearchTermStore, cardResultStore, SearchTerms } from "../lib/Stores";
     import CardPagination from "./../components/CardPagination.svelte";
     import CardCase from "../components/CardCase.svelte";
     import { CardSearchResults } from "../lib/Card";
     import CardSort from "../components/CardSort.svelte";
+    import CardFilters from "../components/CardFilters.svelte";
+    import {
+        cardSearchTermStore,
+        cardResultStore,
+        SearchTerms,
+    } from "../lib/Stores";
 
     let results: CardSearchResults = new CardSearchResults();
     let terms: SearchTerms = new SearchTerms();
@@ -19,7 +24,8 @@
 </script>
 
 <div class="flex">
-    <div class="flex-grow"/>
+    <CardFilters searchStore={cardSearchTermStore} />
+    <div class="flex-grow" />
     <CardSort searchStore={cardSearchTermStore} />
 </div>
 
