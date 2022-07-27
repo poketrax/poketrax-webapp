@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Card } from "../lib/Card";
-    import Fab, { Icon } from "@smui/fab";
+    import { Button, Icon } from "svelte-materialify";
+    import { mdiPlus } from "@mdi/js";
     import { parseGrade, Grade } from "../lib/CardDB";
     import "../assets/css/smui-dark.css";
     import "../assets/css/smui.css";
@@ -43,8 +44,8 @@
     </div>
 {:else}
     <div class="min-w-10 m-2">
-        <Fab id={`add-card-button${id}`} aria-label="add" mini>
-            <Icon class="material-icons">add</Icon>
-        </Fab>
+        <Button fab aria-label="Add Card to Collection" size="small" class="bg-gray-200">
+            <Icon path={mdiPlus} />
+        </Button>
     </div>
 {/if}

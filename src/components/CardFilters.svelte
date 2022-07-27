@@ -1,6 +1,5 @@
 <script lang="ts">
     import { setStore } from "../lib/Stores";
-    import Svelecte from "svelecte/src/Svelecte.svelte";
     import Icon from "@smui/textfield/icon";
     import type { Writable } from "svelte/store";
     import type { SearchTerms } from "../lib/Stores";
@@ -34,10 +33,9 @@
         variant="outlined"
         bind:value={keyword}
         on:change={keywordSearch}
-        label="Keyword"
-    />
+    >
+        <Icon class="material-icons" slot="leadingIcon">search</Icon>
+    </Textfield>
+    
 </div>
-<div class="p-4">
-
-</div>
-
+<div class="p-4" />

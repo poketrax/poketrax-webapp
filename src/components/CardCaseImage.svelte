@@ -1,15 +1,15 @@
 <script lang="ts">
+    import { ProgressCircular } from "svelte-materialify";
     import type { Card } from "../lib/Card";
     import { baseURL, getVariantBG } from "../lib/Stores";
-    import CircularProgress from "@smui/circular-progress/dist/CircularProgress.svelte";
 
     let imgLoaded = false;
     export let id: number;
     export let card: Card;
 
-    function imgError(ev){
-        imgLoaded = true
-        ev.target.src = "./assets/pokemon-back.png"
+    function imgError(ev) {
+        imgLoaded = true;
+        ev.target.src = "./assets/pokemon-back.png";
     }
 
     const rainbowHolo = `linear-gradient(
@@ -30,7 +30,7 @@
 <div class="relative">
     <div class="absolute flex items-center justify-center w-72 h-[357px]">
         {#if !imgLoaded}
-            <CircularProgress style="height: 100px; width: 100px;" indeterminate />
+            <ProgressCircular size={70} width={6} indeterminate />
         {/if}
     </div>
     <div class="flex justify-center align-middle">

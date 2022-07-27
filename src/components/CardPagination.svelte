@@ -1,7 +1,13 @@
 <script lang="ts">
     import type { Writable } from "svelte/store";
     import type { SearchTerms } from "../lib/Stores";
-    import IconButton from "@smui/icon-button";
+    import { Button, Icon } from "svelte-materialify";
+    import {
+        mdiPageFirst,
+        mdiChevronLeft,
+        mdiChevronRight,
+        mdiPageLast,
+    } from "@mdi/js";
     import type { CardSearchResults } from "../lib/Card";
 
     let total = 0;
@@ -37,52 +43,52 @@
     <div class="pl-2">
         {start + 1}-{end} of {total}
     </div>
-    <IconButton
-        class="material-icons"
-        action="first-page"
-        title="First page"
+    <Button
+        aria-label="First Page"
         on:click={() => {
             searchStore.update((terms) => {
                 terms.page = 0;
                 return terms;
             });
         }}
-        disabled={currentPage === 0}>first_page</IconButton
+        disabled={currentPage === 0}
     >
-    <IconButton
-        class="material-icons"
-        action="prev-page"
-        title="Prev page"
+        <Icon path={mdiPageFirst} />
+    </Button>
+    <Button
+        aria-label="Previous Page"
         on:click={() => {
             searchStore.update((terms) => {
                 terms.page = --currentPage;
                 return terms;
             });
         }}
-        disabled={currentPage === 0}>chevron_left</IconButton
+        disabled={currentPage === 0}
     >
-    <IconButton
-        class="material-icons"
-        action="next-page"
-        title="Next page"
+        <Icon path={mdiChevronLeft} />
+    </Button>
+    <Button
+        aria-label="Next page"
         on:click={() => {
             searchStore.update((terms) => {
                 terms.page = ++currentPage;
                 return terms;
             });
         }}
-        disabled={currentPage === lastPage}>chevron_right</IconButton
+        disabled={currentPage === lastPage}
     >
-    <IconButton
-        class="material-icons"
-        action="last-page"
-        title="Last page"
+        <Icon path={mdiChevronRight} />
+    </Button>
+    <Button
+        aira-label="Last page"
         on:click={() => {
             searchStore.update((terms) => {
                 terms.page = lastPage;
                 return terms;
             });
         }}
-        disabled={currentPage === lastPage}>last_page</IconButton
+        disabled={currentPage === lastPage}
     >
+        <Icon path={mdiPageLast} />
+    </Button>
 </div>

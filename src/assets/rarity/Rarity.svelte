@@ -1,28 +1,35 @@
 <script lang="ts">
-    import { Icon } from "@smui/fab";
-    import Common from "./Common.svelte";
+    import { Icon, MaterialApp } from "svelte-materialify";
     import Amazing from "./Amazing.svelte";
     import Promo from "./Promo.svelte";
-    import "../css/smui-dark.css";
-    import "../css/smui.css";
+    import {
+        mdiStar,
+        mdiStarHalfFull,
+        mdiStarOutline,
+        mdiShimmer,
+        mdiCheckboxBlankCircle,
+        mdiRhombus
+    } from "@mdi/js";
     export let rarity: string;
 </script>
 
 {#if rarity === "Holo Rare"}
-    <span>H</span><Icon class="material-icons">star</Icon>
+    <span>H</span><Icon path={mdiStar}/>
 {:else if rarity === "Common"}
-    <Common />
-{:else if rarity === "Ultra Rare" || rarity === "Rare BREAK" || rarity === "Classic Collection" }
-    <Icon class="material-icons">star_half</Icon>
+    <Icon path={mdiCheckboxBlankCircle} />
+{:else if rarity === "Uncommon"}
+    <Icon path={mdiRhombus} />
+{:else if rarity === "Ultra Rare" || rarity === "Rare BREAK" || rarity === "Classic Collection"}
+    <Icon path={mdiStarHalfFull}/>
 {:else if rarity === "Secret Rare"}
-    <Icon class="material-icons">grade</Icon>
+    <Icon path={mdiStarOutline}/>
 {:else if rarity === "Amazing Rare"}
     <Amazing />
 {:else if rarity === "Promo"}
     <Promo />
 {:else if rarity === "Shiny Holo Rare"}
-    <Icon class="material-icons">temp_preferences_custom</Icon>
-    <Icon class="material-icons">star</Icon>
+    <Icon path={mdiShimmer} />
+    <Icon path={mdiStar} />
 {:else}
-    <Icon class="material-icons">star</Icon>
+    <Icon path={mdiStar}/>
 {/if}

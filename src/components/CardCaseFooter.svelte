@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Tooltip, { Wrapper } from "@smui/tooltip";
+    import { Tooltip } from "svelte-materialify";
     import type { Card } from "../lib/Card";
     import { baseURL } from "../lib/Stores";
     import "../assets/css/smui-dark.css";
@@ -12,7 +12,7 @@
     let price = `$-.--`;
     let color = "";
 
-    beforeUpdate( () => {
+    beforeUpdate(() => {
         if (card.price != null) {
             price = `$${card.price.toFixed(2).toString()}`;
             if (card.paid != null && card.paid !== 0) {
@@ -30,14 +30,14 @@
 
 <div class="h-8 pl-4 pr-4 flex justify-center items-center">
     <div class="flex justify-items-center items-center h-8 w-8">
-        <Wrapper>
+        <Tooltip top>
             <img
                 class="h-6"
                 alt={card.expName}
                 src={baseURL + "/expSymbol/" + card.expName}
             />
-            <Tooltip>{card.expName}</Tooltip>
-        </Wrapper>
+            <span slot="tip">{card.expName}</span>
+        </Tooltip>
     </div>
     <div class="grow" />
     <!--price-->
@@ -46,10 +46,10 @@
     <span>{card.expCardNumber}</span>
     <div class="grow" />
 
-    <Wrapper>
+    <Tooltip top>
         <div class="flex justify-items-center items-center">
             <Rarity rarity={card.rarity} />
         </div>
-        <Tooltip>{card.rarity}</Tooltip>
-    </Wrapper>
+        <span slot="tip">{card.rarity}</span>
+    </Tooltip>
 </div>

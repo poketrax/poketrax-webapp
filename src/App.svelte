@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { MaterialApp } from "svelte-materialify";
   import TitleBar from "./components/TitleBar.svelte";
   import { page } from "./lib/Stores";
   import CardSearch from "./pages/CardSearch.svelte";
@@ -12,23 +13,25 @@
   page.subscribe((value) => (pageVal = value));
 </script>
 
-<TitleBar />
+<MaterialApp>
+  <TitleBar />
 
-{#if pageVal === "cards"}
-  <CardSearch />
-{/if}
+  {#if pageVal === "cards"}
+    <CardSearch />
+  {/if}
 
-{#if pageVal === "sets"}
-  <Sets />
-{/if}
+  {#if pageVal === "sets"}
+    <Sets />
+  {/if}
 
-{#if pageVal === "sealedProducts"}
-  <SealedProductSearch />
-{/if}
+  {#if pageVal === "sealedProducts"}
+    <SealedProductSearch />
+  {/if}
 
-{#if pageVal === "collections"}
-  <Collections />
-{/if}
+  {#if pageVal === "collections"}
+    <Collections />
+  {/if}
+</MaterialApp>
 
 <style global lang="postcss">
   @tailwind base;
